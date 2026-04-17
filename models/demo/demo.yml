@@ -1,36 +1,45 @@
+
 version: 2
 
 models:
   - name: employee
-    description: 'Employee DBT model'
+    description: "Employee DBT model"
     columns:
       - name: emp_id
         data_tests:
           - unique
           - not_null
-          - accepted_values:
-              arguments:
-                values: ['1','2','3','4','5']
-                config:
-                  severity: warn
-      - name: emp_salary
-        data_tests:
-          - salary_check
-      - name: customer
-        description: 'DBT Model for the customer table'
-      - name: customer_vw
-        description: 'DBT Model for the customer view'
-      - name: sales
-        description: 'this is a sales table with incremental append materialization'
-      - name: product
-        description: 'dbt model for product table'
-      - name: purchase
-        description: 'dbt model for purchase table'
-      - name: clean_orders
-        description: 'dbt ephemeral model for cleaned orders'
-      - name: final_orders
-        description: "DBT model for the finale orders model"
-      
+
+  - name: customer
+    description: "DBT Model for the customer table"
+
+  - name: customer_vw
+    description: "DBT Model for the customer view"
+
+  - name: sales
+    description: "Sales table"
+
+  - name: product
+    description: "Product table"
+
+  - name: purchase
+    description: "Purchase table"
+
+  - name: clean_orders
+    description: "Ephemeral model"
+
+  - name: final_orders
+    description: "Final orders model"
+
+  - name: session
+    description: "DBT Model for the session table"
+  
+  - name: concat_name
+    description: "DBT Model for the concat name"
+    
+  - name: concat_address
+    description: "DBT Model for the concat address"
+
 
 sources:
   - name: employee
@@ -68,3 +77,8 @@ sources:
     schema: PUBLIC
     tables:
       - name: PATIENT_SRC
+  - name: session
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: SESSION_SRC
