@@ -22,6 +22,10 @@ models:
         description: 'DBT Model for the customer view'
       - name: sales
         description: 'this is a sales table with incremental append materialization'
+      - name: product
+        description: 'dbt model for product table'
+      - name: purchase
+        description: 'dbt model for purchase table'
 
 sources:
   - name: employee
@@ -39,3 +43,13 @@ sources:
     schema: PUBLIC
     tables:
       - name: SALES_SRC
+  - name: product
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: PRODUCT_SRC
+  - name: purchase
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: PURCHASE_SRC
